@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="filo_sale_order_form" model="ir.ui.view">
+        <field name="name">filo.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field eval="100" name="priority"/>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[4]" position="replace">
+                <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice" type="action" context="{'default_advance_payment_method': 'delivered'}" attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
